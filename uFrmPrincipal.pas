@@ -178,7 +178,19 @@ begin
     ConnPrincipal.Connected := True;
   except
   end;
-
+  {$IFDEF DEBUG}
+    LblEdtCaminhoBanco.Visible := True;
+    LblEdtDBUser_Name.Visible := True;
+    LblEdtDBPassword.Visible := True;
+    SpdBtnAlterar.Visible := True;
+    SpdBtnSalvar.Visible := True;
+  {$ELSE}
+    LblEdtCaminhoBanco.Visible := False;
+    LblEdtDBUser_Name.Visible := False;
+    LblEdtDBPassword.Visible := False;
+    SpdBtnAlterar.Visible := False;
+    SpdBtnSalvar.Visible := False;
+  {$ENDIF}
   ToggleConexao(ConnPrincipal.Connected);
 end;
 
