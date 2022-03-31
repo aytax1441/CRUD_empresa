@@ -1,0 +1,1603 @@
+object frmCadEmpresas: TfrmCadEmpresas
+  Left = 0
+  Top = 0
+  Caption = 'Cadastro de Empresas'
+  ClientHeight = 451
+  ClientWidth = 624
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poMainFormCenter
+  OnShow = FormShow
+  TextHeight = 15
+  object PnlCabecalho: TPanel
+    Left = 0
+    Top = 0
+    Width = 624
+    Height = 65
+    Align = alTop
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 8
+      Top = 6
+      Width = 73
+      Height = 15
+      Caption = 'Cod. Empresa'
+    end
+    object EdtCodEmpresa: TButtonedEdit
+      Left = 8
+      Top = 22
+      Width = 97
+      Height = 23
+      Images = ImgsBotoes
+      NumbersOnly = True
+      ParentShowHint = False
+      RightButton.Hint = 'Pesquisar'
+      RightButton.ImageIndex = 0
+      RightButton.Visible = True
+      ShowHint = True
+      TabOrder = 0
+      OnKeyDown = EdtCodEmpresaKeyDown
+      OnRightButtonClick = EdtCodEmpresaRightButtonClick
+    end
+    object DBLblEdtNMEMPRESA: TDBLabeledEdit
+      Left = 111
+      Top = 22
+      Width = 505
+      Height = 23
+      DataField = 'NMEMPRESA'
+      DataSource = DsEmpresa
+      Enabled = False
+      TabOrder = 1
+      EditLabel.Width = 86
+      EditLabel.Height = 15
+      EditLabel.Caption = 'Nome Empresa*'
+    end
+    object DBChkAtiva: TDBCheckBox
+      Left = 519
+      Top = 3
+      Width = 97
+      Height = 17
+      Caption = 'Empresa Ativa?'
+      DataField = 'STATIVO'
+      DataSource = DsEmpresa
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 2
+      ValueChecked = 'S'
+      ValueUnchecked = 'N'
+    end
+  end
+  object PnlCorpo: TPanel
+    Left = 0
+    Top = 65
+    Width = 624
+    Height = 341
+    Align = alClient
+    TabOrder = 1
+    object PgControl: TPageControl
+      Left = 1
+      Top = 1
+      Width = 622
+      Height = 339
+      ActivePage = TabEnderecos
+      Align = alClient
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      MultiLine = True
+      ParentFont = False
+      TabOrder = 0
+      object TabDadosEmpresa: TTabSheet
+        Caption = 'Dados Jur'#237'dicos'
+        Enabled = False
+        object Label2: TLabel
+          Left = 521
+          Top = 3
+          Width = 90
+          Height = 15
+          Caption = 'Data de Cadastro'
+        end
+        object Label4: TLabel
+          Left = 3
+          Top = 211
+          Width = 67
+          Height = 15
+          Caption = 'Observa'#231#245'es'
+        end
+        object DBLblEdtNUCNPJ: TDBLabeledEdit
+          Left = 3
+          Top = 24
+          Width = 150
+          Height = 23
+          Hint = 
+            'Preencher somente com n'#250'meros! Caracteres especiais ( /; -; .;) ' +
+            'ser'#227'o ignorados!'
+          DataField = 'NUCNPJ'
+          DataSource = DsEmpresa
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          EditLabel.Width = 32
+          EditLabel.Height = 15
+          EditLabel.Caption = 'CNPJ*'
+        end
+        object DtCadastro: TDateTimePicker
+          Left = 504
+          Top = 24
+          Width = 107
+          Height = 23
+          Date = 36526.000000000000000000
+          Time = 0.684317870371160100
+          Enabled = False
+          ParentShowHint = False
+          ShowHint = False
+          TabOrder = 2
+        end
+        object DBLblEdtNUINSCRICAO: TDBLabeledEdit
+          Left = 159
+          Top = 24
+          Width = 150
+          Height = 23
+          Hint = 
+            'Preencher somente com n'#250'meros! Caracteres especiais ( /; -; .;) ' +
+            'ser'#227'o ignorados!'
+          DataField = 'NUINSCRICAO'
+          DataSource = DsEmpresa
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 1
+          EditLabel.Width = 94
+          EditLabel.Height = 15
+          EditLabel.Caption = 'Inscri'#231#227'o Estadual'
+        end
+        object GrpDadosContato: TGroupBox
+          Left = 3
+          Top = 100
+          Width = 608
+          Height = 105
+          Caption = 'Dados de Contato'
+          TabOrder = 3
+          object DBLblEdtTLCOMERCIAL: TDBLabeledEdit
+            Left = 8
+            Top = 32
+            Width = 150
+            Height = 23
+            DataField = 'TLCOMERCIAL'
+            DataSource = DsEmpresa
+            TabOrder = 0
+            EditLabel.Width = 101
+            EditLabel.Height = 15
+            EditLabel.Caption = 'Telefone Comercial'
+          end
+          object DBLblEdtTLCELULAR: TDBLabeledEdit
+            Left = 8
+            Top = 75
+            Width = 150
+            Height = 23
+            DataField = 'TLCELULAR'
+            DataSource = DsEmpresa
+            TabOrder = 2
+            EditLabel.Width = 84
+            EditLabel.Height = 15
+            EditLabel.Caption = 'Telefone Celular'
+          end
+          object DBLblEdtTXEMAIL: TDBLabeledEdit
+            Left = 176
+            Top = 32
+            Width = 417
+            Height = 23
+            DataField = 'TXEMAIL'
+            DataSource = DsEmpresa
+            TabOrder = 1
+            EditLabel.Width = 34
+            EditLabel.Height = 15
+            EditLabel.Caption = 'E-mail'
+          end
+        end
+        object DBMemoTXOBS: TDBMemo
+          Left = 3
+          Top = 234
+          Width = 608
+          Height = 74
+          DataField = 'TXOBS'
+          DataSource = DsEmpresa
+          TabOrder = 4
+        end
+        object DBLblEdtDtAbertura: TDBLabeledEdit
+          Left = 3
+          Top = 71
+          Width = 150
+          Height = 23
+          DataField = 'DTABERTURA'
+          DataSource = DsEmpresa
+          TabOrder = 5
+          EditLabel.Width = 94
+          EditLabel.Height = 15
+          EditLabel.Caption = 'Data de Abertura*'
+        end
+      end
+      object TabTitulares: TTabSheet
+        Caption = 'Titulares'
+        ImageIndex = 1
+        OnShow = TabTitularesShow
+        object PnlCabecalhoTitulares: TPanel
+          Left = 0
+          Top = 0
+          Width = 614
+          Height = 37
+          Align = alTop
+          TabOrder = 0
+          object SpdBtnEditarTitular: TSpeedButton
+            Left = 546
+            Top = 0
+            Width = 33
+            Height = 33
+            Hint = 'Editar'
+            ImageIndex = 3
+            Images = ImgsBotoes
+            Enabled = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = SpdBtnEditarTitularClick
+          end
+          object SpdBtnExcluirTitular: TSpeedButton
+            Left = 578
+            Top = 0
+            Width = 33
+            Height = 33
+            Hint = 'Excluir'
+            ImageIndex = 5
+            Images = ImgsBotoes
+            Enabled = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = SpdBtnExcluirTitularClick
+          end
+          object SpdBtnNovoTitular: TSpeedButton
+            Left = 514
+            Top = 0
+            Width = 33
+            Height = 33
+            Hint = 'Novo'
+            ImageIndex = 4
+            Images = ImgsBotoes
+            Enabled = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = SpdBtnNovoTitularClick
+          end
+          object DBTxtQtdTitularAtivo: TDBText
+            Left = 3
+            Top = 0
+            Width = 286
+            Height = 17
+            DataField = 'QTD_TIT_ATIVO'
+            DataSource = DsEmpresa
+          end
+          object DBTxtQtdTitularTotal: TDBText
+            Left = 3
+            Top = 14
+            Width = 286
+            Height = 17
+            DataField = 'QTD_TIT_TOTAL'
+            DataSource = DsEmpresa
+          end
+        end
+        object PnlCorpoTitulares: TPanel
+          Left = 0
+          Top = 37
+          Width = 614
+          Height = 272
+          Align = alClient
+          TabOrder = 1
+          object DBGridTitulares: TDBGrid
+            Left = 1
+            Top = 1
+            Width = 612
+            Height = 270
+            Align = alClient
+            DataSource = DsTitulares
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+            ParentFont = False
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -12
+            TitleFont.Name = 'Segoe UI'
+            TitleFont.Style = [fsBold]
+            OnDblClick = DBGridTitularesDblClick
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'STATIVO'
+                Title.Caption = 'Ativo?'
+                Width = 59
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'IDTITULAR'
+                Title.Caption = 'C'#243'digo'
+                Width = 46
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'NMTITULAR'
+                Title.Caption = 'Nome'
+                Width = 224
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'NUCNPJCPF'
+                Title.Caption = 'CPF/CNPJ'
+                Width = 118
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'NUINCRICAORG'
+                Title.Caption = 'RG/Inscri'#231#227'o Estadual'
+                Width = 128
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'TXOBS'
+                Title.Caption = 'Observa'#231#227'o'
+                Visible = True
+              end>
+          end
+        end
+      end
+      object TabFuncionarios: TTabSheet
+        Caption = 'Funcion'#225'rios'
+        ImageIndex = 2
+        OnShow = TabFuncionariosShow
+        object PnlCorpoFuncionarios: TPanel
+          Left = 0
+          Top = 37
+          Width = 614
+          Height = 272
+          Align = alClient
+          TabOrder = 0
+          object DBGridFuncionarios: TDBGrid
+            Left = 1
+            Top = 1
+            Width = 612
+            Height = 270
+            Align = alClient
+            DataSource = DsFuncionarios
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+            ParentFont = False
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -12
+            TitleFont.Name = 'Segoe UI'
+            TitleFont.Style = [fsBold]
+            OnDblClick = DBGridFuncionariosDblClick
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'STATIVO'
+                Title.Caption = 'Ativo?'
+                Width = 59
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'IDFUNCIONARIO'
+                Title.Caption = 'C'#243'digo'
+                Width = 46
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'NMFUNCIONARIO'
+                Title.Caption = 'Nome'
+                Width = 224
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'NUCPF'
+                Title.Caption = 'CPF'
+                Width = 118
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'NURG'
+                Title.Caption = 'RG'
+                Width = 128
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'TXOBS'
+                Title.Caption = 'Observa'#231#227'o'
+                Visible = True
+              end>
+          end
+        end
+        object Panel1: TPanel
+          Left = 0
+          Top = 0
+          Width = 614
+          Height = 37
+          Align = alTop
+          TabOrder = 1
+          object SpdBtnEditarFuncionario: TSpeedButton
+            Left = 546
+            Top = 0
+            Width = 33
+            Height = 33
+            Hint = 'Editar'
+            ImageIndex = 3
+            Images = ImgsBotoes
+            Enabled = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = SpdBtnEditarFuncionarioClick
+          end
+          object SpdBtnExcluirFuncionario: TSpeedButton
+            Left = 578
+            Top = -1
+            Width = 33
+            Height = 33
+            Hint = 'Excluir'
+            ImageIndex = 5
+            Images = ImgsBotoes
+            Enabled = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = SpdBtnExcluirFuncionarioClick
+          end
+          object SpdBtnNovoFuncionario: TSpeedButton
+            Left = 514
+            Top = 0
+            Width = 33
+            Height = 33
+            Hint = 'Novo'
+            ImageIndex = 4
+            Images = ImgsBotoes
+            Enabled = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = SpdBtnNovoFuncionarioClick
+          end
+          object DBTxtQtdFuncionariosAtivo: TDBText
+            Left = 3
+            Top = 0
+            Width = 286
+            Height = 17
+            DataField = 'QTD_FUNC_ATIVO'
+            DataSource = DsEmpresa
+          end
+          object DBTxtQtdFuncionariosTotal: TDBText
+            Left = 3
+            Top = 14
+            Width = 286
+            Height = 17
+            DataField = 'QTD_FUNC_TOTAL'
+            DataSource = DsEmpresa
+          end
+        end
+      end
+      object TabEnderecos: TTabSheet
+        Caption = 'Endere'#231'os'
+        ImageIndex = 3
+        OnShow = TabEnderecosShow
+        object PnlCorpoEnderecos: TPanel
+          Left = 0
+          Top = 37
+          Width = 614
+          Height = 272
+          Align = alClient
+          TabOrder = 0
+          object DBGridEnderecos: TDBGrid
+            Left = 1
+            Top = 1
+            Width = 612
+            Height = 270
+            Align = alClient
+            DataSource = DsEnderecos
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = 'Segoe UI'
+            Font.Style = []
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+            ParentFont = False
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -12
+            TitleFont.Name = 'Segoe UI'
+            TitleFont.Style = [fsBold]
+            OnDblClick = DBGridEnderecosDblClick
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'STATIVO'
+                Title.Caption = 'Ativo?'
+                Width = 59
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'IDENDERECO'
+                Title.Caption = 'C'#243'digo'
+                Width = 46
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'NMENDERECO'
+                Title.Caption = 'Logradouro'
+                Width = 224
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'NUENDERECO'
+                Title.Caption = 'N'#186
+                Width = 48
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'NMBAIRRO'
+                Title.Caption = 'Bairro'
+                Width = 104
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'NMCIDADE'
+                Title.Caption = 'Cidade'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'NMESTADO'
+                Title.Caption = 'Estado'
+                Visible = True
+              end>
+          end
+        end
+        object Panel2: TPanel
+          Left = 0
+          Top = 0
+          Width = 614
+          Height = 37
+          Align = alTop
+          TabOrder = 1
+          object SpdBtnEditarEndereco: TSpeedButton
+            Left = 546
+            Top = 0
+            Width = 33
+            Height = 33
+            Hint = 'Editar'
+            ImageIndex = 3
+            Images = ImgsBotoes
+            Enabled = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = SpdBtnEditarEnderecoClick
+          end
+          object SpdBtnExcluirEndereco: TSpeedButton
+            Left = 578
+            Top = 0
+            Width = 33
+            Height = 33
+            Hint = 'Excluir'
+            ImageIndex = 5
+            Images = ImgsBotoes
+            Enabled = False
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = SpdBtnExcluirEnderecoClick
+          end
+          object SpdBtnNovoEndereco: TSpeedButton
+            Left = 514
+            Top = 0
+            Width = 33
+            Height = 33
+            Hint = 'Novo'
+            ImageIndex = 4
+            Images = ImgsBotoes
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = SpdBtnNovoEnderecoClick
+          end
+          object DBTxtQtdEnderecosAtivo: TDBText
+            Left = 3
+            Top = 0
+            Width = 286
+            Height = 17
+            DataField = 'QTD_END_ATIVO'
+            DataSource = DsEmpresa
+          end
+          object DBTxtQtdEnderecosTotal: TDBText
+            Left = 3
+            Top = 14
+            Width = 286
+            Height = 17
+            DataField = 'QTD_END_TOTAL'
+            DataSource = DsEmpresa
+          end
+        end
+      end
+    end
+  end
+  object PnlRodape: TPanel
+    Left = 0
+    Top = 406
+    Width = 624
+    Height = 45
+    Align = alBottom
+    TabOrder = 2
+    object SpdBtnSalvar: TSpeedButton
+      Left = 184
+      Top = 5
+      Width = 89
+      Height = 35
+      Caption = 'Salvar'
+      ImageIndex = 2
+      Images = ImgsBotoes
+      Enabled = False
+      OnClick = SpdBtnSalvarClick
+    end
+    object SpdBtnEditar: TSpeedButton
+      Left = 96
+      Top = 5
+      Width = 89
+      Height = 35
+      Caption = 'Editar'
+      ImageIndex = 3
+      Images = ImgsBotoes
+      Enabled = False
+      OnClick = SpdBtnEditarClick
+    end
+    object SpdBtnCancelar: TSpeedButton
+      Left = 272
+      Top = 5
+      Width = 89
+      Height = 35
+      Caption = 'Cancelar'
+      ImageIndex = 1
+      Images = ImgsBotoes
+      Enabled = False
+      OnClick = SpdBtnCancelarClick
+    end
+    object SpdBtnNovo: TSpeedButton
+      Left = 8
+      Top = 5
+      Width = 89
+      Height = 35
+      Caption = 'Novo'
+      ImageIndex = 4
+      Images = ImgsBotoes
+      OnClick = SpdBtnNovoClick
+    end
+    object SpdBtnExcluir: TSpeedButton
+      Left = 360
+      Top = 5
+      Width = 89
+      Height = 35
+      Caption = 'Excluir'
+      ImageIndex = 5
+      Images = ImgsBotoes
+      Enabled = False
+      OnClick = SpdBtnExcluirClick
+    end
+  end
+  object ImgsBotoes: TImageList
+    Left = 560
+    Top = 288
+    Bitmap = {
+      494C010108001800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      0000000000003600000028000000400000003000000001002000000000000030
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000FFBF67FFFF88
+      00FFFF8800FF0000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000044DAFFFF44DAFFFF00CDFFFF00CD
+      FFFF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000004DB7FFFF4DB7FFFF4DB7
+      FFFF4DB7FFFF4DB7FFFF4DB7FFFF1EA9FFFF1EA9FFFFFFBF67FFFFBF67FFDBD8
+      D9FFFF8800FFFF8800FF00000000000000000000000000000000CAC5C6FFCAC5
+      C6FFCAC5C6FFCAC5C6FFB1ABACFF44DAFFFF44DAFFFF44DAFFFF00CDFFFF00CD
+      FFFF00CDFFFF00CDFFFF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000004DB7FFFF4DB7FFFF4DB7
+      FFFF4DB7FFFF4DB7FFFF4DB7FFFF1EA9FFFFFFBF67FFFFBF67FFFFBF67FFDBD8
+      D9FFFF8800FFFF8800FFFF8800FF000000000000000000000000CAC5C6FFCAC5
+      C6FFCAC5C6FFCAC5C6FF44DAFFFF44DAFFFF44DAFFFF44DAFFFF00CDFFFF00CD
+      FFFF00CDFFFF00CDFFFF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000004DB7FFFF4DB7FFFF4DB7
+      FFFF4DB7FFFF4DB7FFFF4DB7FFFF1EA9FFFFFFBF67FFFFBF67FFFFFFFFFFDBD8
+      D9FFDBD8D9FFFF8800FFFF8800FF000000000000000000000000CAC5C6FFCAC5
+      C6FFCAC5C6FFCAC5C6FF44DAFFFF44DAFFFF44DAFFFFFF8824FFFF8824FFFF88
+      24FF00CDFFFF00CDFFFF00CDFFFF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000004DB7FFFF4DB7FFFF4DB7
+      FFFF4DB7FFFF4DB7FFFF4DB7FFFF1EA9FFFFFFBF67FFFFBF67FFFFBF67FFDBD8
+      D9FFFF8800FFFF8800FFFF8800FF000000000000000000000000CAC5C6FFCAC5
+      C6FFCAC5C6FFCAC5C6FF44DAFFFF44DAFFFF44DAFFFFFF8824FFFF8824FF00CD
+      FFFF00CDFFFF00CDFFFF00CDFFFF00000000000000000000000044DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF00CDFFFFF8E7D1FFF8E7D1FFF8E7D1FFF8E7D1FFF8E7
+      D1FFF8E7D1FFF8E7D1FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000004DB7FFFF4DB7FFFF4DB7
+      FFFF4DB7FFFF4DB7FFFF4DB7FFFF1EA9FFFF1EA9FFFFFFBF67FFFFBF67FFFF88
+      00FFFF8800FFFF8800FF00000000000000000000000000000000CAC5C6FFCAC5
+      C6FFCAC5C6FFCAC5C6FF44DAFFFF44DAFFFF44DAFFFFFF8824FF00CDFFFFFF88
+      24FF00CDFFFF00CDFFFF00CDFFFF000000000000000044DAFFFF44DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF00CDFFFF00CDFFFFF8E7D1FFF8E7D1FFF8E7D1FFF8E7
+      D1FFF8E7D1FFF8E7D1FFF8E7D1FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000004DB7FFFF4DB7FFFF4DB7
+      FFFF4DB7FFFF4DB7FFFF4DB7FFFF1EA9FFFF1EA9FFFF1EA9FFFF1EA9FFFFFF88
+      00FF1EA9FFFF0000000000000000000000000000000000000000CAC5C6FFCAC5
+      C6FFCAC5C6FFCAC5C6FF44DAFFFF44DAFFFF44DAFFFF44DAFFFF00CDFFFF00CD
+      FFFF00CDFFFF00CDFFFF000000000000000044DAFFFF44DAFFFF44DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF00CDFFFF00CDFFFFF8E7D1FFF8E7D1FFF8E7D1FFF8E7
+      D1FFF8E7D1FFF8E7D1FFF8E7D1FFF8E7D1FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000004DB7FFFF4DB7FFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFF1EA9FFFF1EA9FFFF1EA9FFFF1EA9FFFF1EA9
+      FFFF1EA9FFFF0000000000000000000000000000000000000000CAC5C6FFCAC5
+      C6FFCAC5C6FFCAC5C6FFB1ABACFF44DAFFFF44DAFFFF44DAFFFF00CDFFFF00CD
+      FFFF00CDFFFF00CDFFFF000000000000000044DAFFFF44DAFFFF44DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF00CDFFFF00CDFFFF00CDFFFFF8E7D1FFF8E7D1FFF8E7
+      D1FFF8E7D1FFF8E7D1FFF8E7D1FFF8E7D1FF000000000000000000000000FF88
+      24FFFF8824FFFF8824FFFF8824FFFF8824FFFF8824FFFF8824FFFF8824FF44DA
+      FFFF00CDFFFF000000000000000000000000000000004DB7FFFF4DB7FFFF4DB7
+      FFFF4DB7FFFF4DB7FFFF4DB7FFFF1EA9FFFF1EA9FFFF1EA9FFFF1EA9FFFF1EA9
+      FFFF1EA9FFFF0000000000000000000000000000000000000000CAC5C6FFCAC5
+      C6FFCAC5C6FFCAC5C6FFB1ABACFFB1ABACFFB1ABACFF44DAFFFF00CDFFFF00CD
+      FFFF0000000000000000000000000000000044DAFFFF44DAFFFF44DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF00CDFFFF00CDFFFF00CDFFFFF8E7D1FFF8E7D1FFF8E7
+      D1FFF8E7D1FFF8E7D1FFF8E7D1FFF8E7D1FF00000000FF8824FFFF8824FFFF88
+      24FFFF8824FFFF8824FFFF8824FFFF8824FFFF8824FF44DAFFFF44DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF00CDFFFF00000000000000004DB7FFFF4DB7FFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFDBD8D9FFDBD8D9FFDBD8D9FFDBD8D9FF1EA9
+      FFFF1EA9FFFF0000000000000000000000000000000000000000CAC5C6FFCAC5
+      C6FFCAC5C6FFCAC5C6FFB1ABACFFB1ABACFFB1ABACFFB1ABACFFB1ABACFF0000
+      00000000000000000000000000000000000044DAFFFF44DAFFFF44DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF00CDFFFF00CDFFFFF8E7D1FFF8E7D1FFF8E7D1FFF8E7
+      D1FFF8E7D1FFF8E7D1FFF8E7D1FFF8E7D1FF00000000FF8824FFFF8824FFFF88
+      24FFFF8824FFFF8824FFFF8824FFFF8824FF44DAFFFF44DAFFFF44DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF00CDFFFF00000000000000004DB7FFFF4DB7FFFF4DB7
+      FFFF4DB7FFFF4DB7FFFF4DB7FFFF1EA9FFFF1EA9FFFF1EA9FFFF1EA9FFFF1EA9
+      FFFF1EA9FFFF0000000000000000000000000000000000000000CAC5C6FFCAC5
+      C6FFCAC5C6FFCAC5C6FFB1ABACFFB1ABACFFB1ABACFFB1ABACFFB1ABACFF0000
+      0000000000000000000000000000000000000000000044DAFFFF44DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF00CDFFFF00CDFFFFF8E7D1FFF8E7D1FFF8E7D1FFF8E7
+      D1FFF8E7D1FFF8E7D1FFF8E7D1FF00000000FF8824FFFF8824FFFF8824FFFF88
+      24FFFF8824FFFF8824FFFF8824FFFF8824FF44DAFFFF44DAFFFF44DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF00CDFFFF00CDFFFF000000004DB7FFFF4DB7FFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFF1EA9FFFF1EA9FFFF1EA9FFFF1EA9FFFF1EA9
+      FFFF1EA9FFFF0000000000000000000000000000000000000000CAC5C6FFCAC5
+      C6FFCAC5C6FFCAC5C6FFB1ABACFFB1ABACFFB1ABACFFB1ABACFFB1ABACFF0000
+      000000000000000000000000000000000000000000000000000044DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF00CDFFFFF8E7D1FFF8E7D1FFF8E7D1FFF8E7D1FFF8E7
+      D1FFF8E7D1FFF8E7D1FF0000000000000000FF8824FFFF8824FFFF8824FFFF88
+      24FFFF8824FFFF8824FFFF8824FF44DAFFFF44DAFFFF44DAFFFF44DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF00CDFFFF00CDFFFF000000004DB7FFFF4DB7FFFF4DB7
+      FFFF4DB7FFFF4DB7FFFF4DB7FFFF1EA9FFFF1EA9FFFF1EA9FFFF1EA9FFFF1EA9
+      FFFF1EA9FFFF00000000000000000000000000000000908889FF908889FF9088
+      89FF908889FF908889FF807678FF807678FF807678FF807678FF807678FF8076
+      78FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000FF8824FFFF8824FFFF8824FFFF88
+      24FFFF8824FFFF8824FFFF8824FF44DAFFFF44DAFFFF44DAFFFF44DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF00CDFFFF00CDFFFF000000004DB7FFFF4DB7FFFF4DB7
+      FFFF4DB7FFFF4DB7FFFF4DB7FFFF1EA9FFFF1EA9FFFF1EA9FFFF0089FFFF0089
+      FFFF0000000000000000000000000000000000000000908889FF908889FF9088
+      89FF908889FF908889FF807678FF807678FF807678FF807678FF807678FF8076
+      78FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000FF8824FFFF8824FFFF8824FFFF88
+      24FFFF8824FFFF8824FFFF8824FFFF8824FF44DAFFFF44DAFFFF44DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF00CDFFFF00CDFFFF000000004DB7FFFF4DB7FFFF4DB7
+      FFFF4DB7FFFF4DB7FFFF4DB7FFFF1EA9FFFF1EA9FFFF1EA9FFFF0089FFFF0000
+      00000000000000000000000000000000000000000000908889FF908889FF9088
+      89FF908889FF908889FF807678FF807678FF807678FF807678FF807678FF8076
+      78FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000FF8824FFFF8824FFFF88
+      24FFFF8824FFFF8824FFFF8824FFFF8824FF44DAFFFF44DAFFFF44DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF00CDFFFF00000000000000004DB7FFFF4DB7FFFF4DB7
+      FFFF4DB7FFFF4DB7FFFF4DB7FFFF1EA9FFFF1EA9FFFF1EA9FFFF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000DAD7D8FFDAD7D8FFDAD7D8FFDAD7D8FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000FF8824FFFF88
+      24FFFF8824FFFF8824FFFF8824FFFF8824FFFF8824FFFF8824FF44DAFFFF44DA
+      FFFF00CDFFFF00CDFFFF0000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000000000000000000000000000000
+      000000000000000000001420C4FF1420C4FF020284FF020284FFF6FFEBFF0000
+      000000000000000000000000000000000000CE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFFFFC99BFFFFC9
+      9BFFFFC99BFF8A3F00FF8A3F00FF8A3F00FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00A0A0A00084848400FFFFFF00000000000000000000000000E0EA
+      D6FF1420C4FF1420C4FF1420C4FF1420C4FF020284FF020284FF020284FF0202
+      84FFF6FFEBFF000000000000000000000000CE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFFFFC99BFFFFC9
+      9BFFFFC99BFF8A3F00FF8A3F00FF8A3F00FF0000000000000000000000000000
+      000099EBFFFF99EBFFFF99EBFFFF99EBFFFF0000000000000000000000000000
+      000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00A0A0A00000000000A0A0A000FFFFFF000000000000000000E0EAD6FF1420
+      C4FF1420C4FF1420C4FF1420C4FF1420C4FF020284FF020284FF020284FF0202
+      84FF020284FFF6FFEBFF0000000000000000CE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFFFFC99BFFFFC9
+      9BFFFFC99BFF8A3F00FF8A3F00FF8A3F00FFCE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFF99EBFFFF99EBFFFF99EBFFFF00CDFFFF00CDFFFFFFC99BFFFFC99BFF8A3F
+      00FF8A3F00FF8A3F00FF0000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF0000000000A0A0A000FFFFFF00FFFFFF0000000000E0EAD6FF1420C4FF1420
+      C4FF1420C4FF1420C4FF1420C4FF1420C4FF020284FF020284FF020284FF0202
+      84FF020284FF020284FFF6FFEBFF00000000CE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFFFFC99BFFFFC9
+      9BFFFFC99BFF8A3F00FF8A3F00FF8A3F00FFCE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFF99EBFFFF44DAFFFF00CDFFFF00CDFFFF00CDFFFFFFC99BFF8A3F
+      00FF8A3F00FF8A3F00FF0000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF0058585800000000001D1D1D00070707001A1A1A00F7F7F7009C9C9C000000
+      0000FFFFFF00FFFFFF00FFFFFF00FFFFFF00000000001420C4FF1420C4FF1420
+      C4FF1420C4FF1420C4FF1420C4FFE0EAD6FFE0EAD6FF020284FF020284FF0202
+      84FF020284FF020284FF020284FF00000000CE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFFFFC99BFFFFC9
+      9BFFFFC99BFF8A3F00FF8A3F00FF8A3F00FFCE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFF44DAFFFF44DAFFFF44DAFFFF00CDFFFF00CDFFFF00CDFFFF8A3F
+      00FF8A3F00FF8A3F00FF0000000000000000FFFFFF00FFFFFF00FFFFFF000A0A
+      0A00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0063636300000000009C9C
+      9C00FFFFFF00FFFFFF00FFFFFF00FFFFFF00E0EAD6FF1420C4FF1420C4FF1420
+      C4FF1420C4FFE0EAD6FFE0EAD6FFE0EAD6FF020284FF020284FF020284FF0202
+      84FF020284FF020284FF020284FFF6FFEBFFCE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFFFFC99BFFFFC9
+      9BFFFFC99BFF8A3F00FF8A3F00FF8A3F00FFCE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFF44DAFFFF44DAFFFF44DAFFFF00CDFFFF00CDFFFF00CD
+      FFFF8A3F00FF8A3F00FF0000000000000000FFFFFF00FFFFFF0021212100FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0093939300CDCD
+      CD00FFFFFF00FFFFFF00FFFFFF00FFFFFF001420C4FF1420C4FF1420C4FF1420
+      C4FFC1CBD3FFE0EAD6FFE0EAD6FF1420C4FF020284FF020284FF020284FF0202
+      84FF020284FF020284FF020284FFE0EAD6FFCE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFFFFC99BFFFFC9
+      9BFFFFC99BFF8A3F00FF8A3F00FF8A3F00FFCE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFF44DAFFFF44DAFFFF44DAFFFF00CDFFFF00CD
+      FFFF00CDFFFF8A3F00FF0000000000000000FFFFFF00FAFAFA0084848400FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000000
+      0000FFFFFF00FFFFFF00FFFFFF00FFFFFF001420C4FF1420C4FF1420C4FF1420
+      C4FFE0EAD6FFE0EAD6FF1420C4FF1420C4FF020284FF020284FFE0EAD6FFE0EA
+      D6FF020284FF020284FF020284FF020284FFCE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFFFFC99BFFFFC9
+      9BFFFFC99BFF8A3F00FF8A3F00FF8A3F00FFCE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFF44DAFFFF44DAFFFF44DAFFFF00CD
+      FFFF00CDFFFF00CDFFFF0000000000000000FFFFFF0068686800FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF009090
+      9000FFFFFF00FFFFFF00FFFFFF00FFFFFF001420C4FF1420C4FF1420C4FF1420
+      C4FFF6FFEBFF1420C4FF1420C4FF1420C4FF020284FFF6FFEBFFF6FFEBFFF6FF
+      EBFF020284FF020284FF020284FF020284FFCE5E00FFCE5E00FFCE5E00FFCE5E
+      00FFCE5E00FFCE5E00FFCE5E00FFCE5E00FF8A3F00FF8A3F00FF8A3F00FF8A3F
+      00FF8A3F00FF8A3F00FF8A3F00FF8A3F00FFCE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFF44DAFFFF44DAFFFF44DA
+      FFFF00CDFFFFCE5E00FFCE5E00FF00000000FFFFFF0026262600FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00DCDC
+      DC00FFFFFF00FFFFFF00FFFFFF00FFFFFF001420C4FF1420C4FF1420C4FF1420
+      C4FF1420C4FF1420C4FF1420C4FF1420C4FFF6FFEBFFF6FFEBFFF6FFEBFF0202
+      84FF020284FF020284FF020284FFF6FFEBFFCE5E00FFCE5E00FFCE5E00FFCE5E
+      00FFCE5E00FFCE5E00FFCE5E00FFCE5E00FF8A3F00FF8A3F00FF8A3F00FF8A3F
+      00FF8A3F00FF8A3F00FF8A3F00FF8A3F00FFCE5E00FFCE5E00FFCE5E00FFCE5E
+      00FFCE5E00FFCE5E00FFCE5E00FF8A3F00FF8A3F00FF8A3F00FF44DAFFFF44DA
+      FFFFFF8824FFCE5E00FFCE5E00FFCE5E00FFFFFFFF0045454500FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00BBBB
+      BB00FFFFFF00FFFFFF00FFFFFF00FFFFFF00000000001420C4FF1420C4FF1420
+      C4FF1420C4FF1420C4FF1420C4FFF6FFEBFFF6FFEBFFF6FFEBFFF6FFEBFF0202
+      84FF020284FF020284FF020284FFF6FFEBFFCE5E00FFCE5E00FFCE5E00FFCE5E
+      00FFCE5E00FFCE5E00FFCE5E00FFCE5E00FF8A3F00FF8A3F00FF8A3F00FF8A3F
+      00FF8A3F00FF8A3F00FF8A3F00FF8A3F00FFCE5E00FFCE5E00FFCE5E00FFCE5E
+      00FFCE5E00FFCE5E00FFCE5E00FF8A3F00FF8A3F00FF8A3F00FF8A3F00FFFF88
+      24FFFF8824FFFF8824FFCE5E00FF00000000FFFFFF00D4D4D400D7D7D700FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF001C1C
+      1C00FFFFFF00FFFFFF00FFFFFF00FFFFFF00000000001420C4FF1420C4FF1420
+      C4FF1420C4FF1420C4FF1420C4FFF6FFEBFFF6FFEBFF020284FF020284FF0202
+      84FF020284FF020284FF020284FF00000000CE5E00FFCE5E00FFCE5E00FFCE5E
+      00FFCE5E00FFCE5E00FFCE5E00FFCE5E00FF8A3F00FF8A3F00FF8A3F00FF8A3F
+      00FF8A3F00FF8A3F00FF8A3F00FF8A3F00FFCE5E00FFCE5E00FFCE5E00FFCE5E
+      00FFCE5E00FFCE5E00FFCE5E00FF8A3F00FF8A3F00FF8A3F00FF8A3F00FF8A3F
+      00FFFF8824FFFF8824FF0000000000000000FFFFFF00FFFFFF0020202000FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0093939300CECE
+      CE00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000000000000000001420C4FF1420
+      C4FF1420C4FF1420C4FF1420C4FF1420C4FF020284FF020284FF020284FF0202
+      84FF020284FF020284FFF6FFEBFF00000000CE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFFFFC99BFFFFC9
+      9BFFFFC99BFF8A3F00FF8A3F00FF8A3F00FFCE5E00FFCE5E00FFCE5E00FFEEB1
+      7DC0EEB17DC0EEB17DC0EEB17DC0D69965C3D69965C3D69965C3D69965C38A3F
+      00FF8A3F00FF8A3F00FF0000000000000000FFFFFF00FFFFFF00FFFFFF000A0A
+      0A00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF006464640086868600FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000000000000000000F4FFE92F1420
+      C4FF1420C4FF1420C4FF1420C4FF1420C4FF020284FF020284FF020284FF0202
+      84FF020284FFF6FFEBFF0000000000000000CE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFFFFC99BFFFFC9
+      9BFFFFC99BFF8A3F00FF8A3F00FF00000000CE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFFFFC99BFFFFC99BFF8A3F
+      00FF8A3F00FF000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF005B5B5B00000000001A1A1A00070707001A1A1A00F7F7F700FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000000000000000000000000000000
+      00001420C4FF1420C4FF1420C4FF1420C4FF020284FF020284FF020284FF0202
+      84FFF6FFEBFF000000000000000000000000CE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFFFFC99BFFFFC9
+      9BFFFFC99BFF8A3F00FF0000000000000000CE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFFFFC99BFFFFC99BFF8A3F
+      00FF00000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000000000000000000000000000000
+      000000000000000000001420C4FF1420C4FF020284FF020284FFF6FFEBFF0000
+      000000000000000000000000000000000000CE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFFFFC99BFFFFC9
+      9BFFFFC99BFF000000000000000000000000CE5E00FFCE5E00FFCE5E00FFFFDB
+      BDFFFFDBBDFFFFDBBDFFFFDBBDFFFFC99BFFFFC99BFFFFC99BFFFFC99BFF0000
+      000000000000000000000000000000000000424D3E000000000000003E000000
+      2800000040000000300000000100010000000000800100000000000000000000
+      000000000000000000000000FFFFFF0000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000FFC7FF0FFFFFFFFF8003C003FFFFFFFF
+      8001C003FFFFFFFF8001C001FFFFFFFF8001C001C003FFFF8003C0018001FFFF
+      8007C0030000FFFF8007C0030000E0078007C00F000080018007C01F00008001
+      8007C01F800100008007C01FC00300008007800FFFFF0000800F800FFFFF0000
+      801F800FFFFF8001803FF0FFFFFFC0030000FC1F0000FFFF0000E0070000F0FF
+      0000C00300000003000080010000000300008001000000030000000000000003
+      0000000000000003000000000000000300000000000000010000000000000000
+      000080000000000100008001000000030000C001000000030000C00300000007
+      0000F0070000000F0000FC1F0000001F00000000000000000000000000000000
+      000000000000}
+  end
+  object QryEmpresa: TFDQuery
+    Connection = frmPrincipal.ConnPrincipal
+    SQL.Strings = (
+      'SELECT '#9'c.IDEMPRESA,'
+      #9#9'c.NMEMPRESA,'
+      #9#9'c.NUCNPJ,'
+      #9#9'c.NUINSCRICAO,'
+      #9#9'c.STATIVO,'
+      #9#9'c.DTCADASTRO,'
+      #9#9'c.DTABERTURA,'
+      #9#9'c.TLCOMERCIAL,'
+      #9#9'c.TLCELULAR,'
+      #9#9'c.TXOBS,'
+      #9#9'c.TXEMAIL,'
+      #9#9'c.STEXCLUIDO,'
+      
+        #9#9#39'Qtd. Titulares Ativos: '#39' || COUNT(DISTINCT c2_ativo.IDTITULAR' +
+        ') AS QTD_TIT_ATIVO,'
+      
+        #9#9#39'Qtd. Titulares: '#39' || COUNT(DISTINCT c2.IDTITULAR) AS QTD_TIT_' +
+        'TOTAL,'
+      
+        #9#9#39'Qtd. Funcion'#225'rios Ativos: '#39' || COUNT(DISTINCT c3_ativo.IDFUNC' +
+        'IONARIO) AS QTD_FUNC_ATIVO,'
+      
+        #9#9#39'Qtd. Funcion'#225'rios: '#39' || COUNT(DISTINCT c3.IDFUNCIONARIO) AS Q' +
+        'TD_FUNC_TOTAL,'
+      
+        #9#9#39'Qtd. Endere'#231'os Ativos: '#39' || COUNT(DISTINCT c4_ativo.IDENDEREC' +
+        'O) AS QTD_END_ATIVO,'
+      
+        #9#9#39'Qtd. Endere'#231'os: '#39' || COUNT(DISTINCT c4.IDENDERECO) AS QTD_END' +
+        '_TOTAL'
+      #9'FROM CADEMPRESA c '
+      #9'LEFT JOIN CADTITULAR c2 '
+      #9'ON'
+      #9#9#9'c2.IDEMPRESA  = c.IDEMPRESA '
+      #9#9'AND c2.STEXCLUIDO = '#39'N'#39
+      #9'LEFT JOIN CADTITULAR c2_ativo '
+      #9'ON'
+      #9#9#9'c2_ativo.IDEMPRESA  = c.IDEMPRESA '
+      #9#9'AND c2_ativo.STEXCLUIDO = '#39'N'#39
+      #9#9'AND c2_ativo.STATIVO    = '#39'S'#39
+      #9'LEFT JOIN CADFUNCIONARIOS c3 '
+      #9'ON'
+      #9#9#9'c3.IDEMPRESA   = c.IDEMPRESA '
+      #9#9'AND c3.STEXCLUIDO  = '#39'N'#39
+      #9'LEFT JOIN CADFUNCIONARIOS c3_ativo'
+      #9'ON'
+      #9#9#9'c3_ativo.IDEMPRESA  = c.IDEMPRESA '
+      #9#9'AND c3_ativo.STEXCLUIDO = '#39'N'#39
+      #9#9'AND c3_ativo.STATIVO    = '#39'S'#39
+      #9'LEFT JOIN CADENDERECOS c4 '
+      #9'ON'
+      #9#9#9'c4.IDEMPRESA   = c.IDEMPRESA '
+      #9#9'AND c4.STEXCLUIDO  = '#39'N'#39
+      #9'LEFT JOIN CADENDERECOS c4_ativo'
+      #9'ON'
+      #9#9#9'c4_ativo.IDEMPRESA  = c.IDEMPRESA '
+      #9#9'AND c4_ativo.STEXCLUIDO = '#39'N'#39
+      #9#9'AND c4_ativo.STATIVO    = '#39'S'#39
+      'WHERE'
+      #9'c.STEXCLUIDO  = '#39'N'#39
+      'AND c.IDEMPRESA  = :COD_EMPRESA'
+      'GROUP BY '#9'c.IDEMPRESA,'
+      #9#9#9'c.NMEMPRESA,'
+      #9#9#9'c.NUCNPJ,'
+      #9#9#9'c.NUINSCRICAO,'
+      #9#9#9'c.STATIVO,'
+      #9#9#9'c.DTCADASTRO,'
+      #9#9#9'c.DTABERTURA,'
+      #9#9#9'c.TLCOMERCIAL,'
+      #9#9#9'c.TLCELULAR,'
+      #9#9#9'c.TXOBS,'
+      #9#9#9'c.TXEMAIL,'
+      #9#9#9'c.STEXCLUIDO')
+    Left = 280
+    Top = 256
+    ParamData = <
+      item
+        Name = 'COD_EMPRESA'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 1
+      end>
+    object QryEmpresaNUCNPJ: TStringField
+      FieldName = 'NUCNPJ'
+      Origin = 'NUCNPJ'
+      Required = True
+      EditMask = '00.000.000/0000-00;1; '
+      Size = 18
+    end
+    object QryEmpresaNUINSCRICAO: TStringField
+      FieldName = 'NUINSCRICAO'
+      Origin = 'NUINSCRICAO'
+      EditMask = '000.000.000.000;1; '
+      Size = 15
+    end
+    object QryEmpresaDTABERTURA: TDateField
+      FieldName = 'DTABERTURA'
+      Origin = 'DTABERTURA'
+      Required = True
+      EditMask = '!99/99/0000;1;_'
+    end
+    object QryEmpresaTLCOMERCIAL: TStringField
+      FieldName = 'TLCOMERCIAL'
+      Origin = 'TLCOMERCIAL'
+      EditMask = '!\(99\) 0000-0000;1;_'
+      Size = 15
+    end
+    object QryEmpresaTLCELULAR: TStringField
+      FieldName = 'TLCELULAR'
+      Origin = 'TLCELULAR'
+      EditMask = '!\(99\) 9 0000-0000;1;_'
+      Size = 15
+    end
+    object QryEmpresaIDEMPRESA: TIntegerField
+      FieldName = 'IDEMPRESA'
+      Origin = 'IDEMPRESA'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QryEmpresaNMEMPRESA: TStringField
+      FieldName = 'NMEMPRESA'
+      Origin = 'NMEMPRESA'
+      Required = True
+      Size = 100
+    end
+    object QryEmpresaSTATIVO: TStringField
+      FieldName = 'STATIVO'
+      Origin = 'STATIVO'
+      FixedChar = True
+      Size = 1
+    end
+    object QryEmpresaDTCADASTRO: TDateField
+      FieldName = 'DTCADASTRO'
+      Origin = 'DTCADASTRO'
+    end
+    object QryEmpresaTXOBS: TStringField
+      FieldName = 'TXOBS'
+      Origin = 'TXOBS'
+      Size = 5000
+    end
+    object QryEmpresaTXEMAIL: TStringField
+      FieldName = 'TXEMAIL'
+      Origin = 'TXEMAIL'
+      Size = 100
+    end
+    object QryEmpresaSTEXCLUIDO: TStringField
+      FieldName = 'STEXCLUIDO'
+      Origin = 'STEXCLUIDO'
+      FixedChar = True
+      Size = 1
+    end
+    object QryEmpresaQTD_TIT_ATIVO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'QTD_TIT_ATIVO'
+      Origin = 'QTD_TIT_ATIVO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 34
+    end
+    object QryEmpresaQTD_TIT_TOTAL: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'QTD_TIT_TOTAL'
+      Origin = 'QTD_TIT_TOTAL'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 27
+    end
+    object QryEmpresaQTD_FUNC_ATIVO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'QTD_FUNC_ATIVO'
+      Origin = 'QTD_FUNC_ATIVO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 37
+    end
+    object QryEmpresaQTD_FUNC_TOTAL: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'QTD_FUNC_TOTAL'
+      Origin = 'QTD_FUNC_TOTAL'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 30
+    end
+    object QryEmpresaQTD_END_ATIVO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'QTD_END_ATIVO'
+      Origin = 'QTD_END_ATIVO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 34
+    end
+    object QryEmpresaQTD_END_TOTAL: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'QTD_END_TOTAL'
+      Origin = 'QTD_END_TOTAL'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 27
+    end
+  end
+  object DsEmpresa: TDataSource
+    DataSet = QryEmpresa
+    Left = 280
+    Top = 304
+  end
+  object QryTitulares: TFDQuery
+    Connection = frmPrincipal.ConnPrincipal
+    SQL.Strings = (
+      'SELECT '#9'c.IDTITULAR,'
+      #9#9'c.NMTITULAR,'
+      #9#9'c.NUCNPJCPF,'
+      #9#9'c.NUINCRICAORG,'
+      #9#9'c.TXOBS,'
+      #9#9'c.STEXCLUIDO,'
+      #9#9'c.DTEXCLUIDO,'
+      
+        #9#9'CASE c.STATIVO WHEN '#39'S'#39' THEN '#39'ATIVO'#39' ELSE '#39'INATIVO'#39' END AS STA' +
+        'TIVO'
+      #9'FROM CADTITULAR c'
+      'WHERE c.STEXCLUIDO = '#39'N'#39
+      'AND c.IDEMPRESA = :COD_EMPRESA'
+      'ORDER BY c.IDTITULAR ASC')
+    Left = 37
+    Top = 257
+    ParamData = <
+      item
+        Name = 'COD_EMPRESA'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 1
+      end>
+    object QryTitularesIDTITULAR: TIntegerField
+      FieldName = 'IDTITULAR'
+      Origin = 'IDTITULAR'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QryTitularesNMTITULAR: TStringField
+      FieldName = 'NMTITULAR'
+      Origin = 'NMTITULAR'
+      Size = 100
+    end
+    object QryTitularesNUCNPJCPF: TStringField
+      FieldName = 'NUCNPJCPF'
+      Origin = 'NUCNPJCPF'
+      Size = 18
+    end
+    object QryTitularesNUINCRICAORG: TStringField
+      FieldName = 'NUINCRICAORG'
+      Origin = 'NUINCRICAORG'
+      Size = 15
+    end
+    object QryTitularesTXOBS: TStringField
+      FieldName = 'TXOBS'
+      Origin = 'TXOBS'
+      Size = 1000
+    end
+    object QryTitularesSTEXCLUIDO: TStringField
+      FieldName = 'STEXCLUIDO'
+      Origin = 'STEXCLUIDO'
+      FixedChar = True
+      Size = 1
+    end
+    object QryTitularesSTATIVO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'STATIVO'
+      Origin = 'STATIVO'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 7
+    end
+    object QryTitularesDTEXCLUIDO: TDateField
+      FieldName = 'DTEXCLUIDO'
+      Origin = 'DTEXCLUIDO'
+    end
+  end
+  object DsTitulares: TDataSource
+    DataSet = QryTitulares
+    Left = 37
+    Top = 305
+  end
+  object QryFuncionarios: TFDQuery
+    Connection = frmPrincipal.ConnPrincipal
+    SQL.Strings = (
+      'SELECT '#9'c.IDFUNCIONARIO,'
+      #9#9'c.NMFUNCIONARIO ,'
+      #9#9'c.NUCPF,'
+      #9#9'c.NURG,'
+      #9#9'c.TXEMAIL,'
+      #9#9'c.STEXCLUIDO,'
+      #9#9'c.DTEXCLUIDO,'
+      
+        #9#9'CASE c.STATIVO WHEN '#39'S'#39' THEN '#39'ATIVO'#39' ELSE '#39'INATIVO'#39' END AS STA' +
+        'TIVO'
+      #9'FROM CADFUNCIONARIOS c '
+      'WHERE c.STEXCLUIDO = '#39'N'#39
+      'AND c.IDEMPRESA = :COD_EMPRESA'
+      'ORDER BY c.IDFUNCIONARIO ASC')
+    Left = 117
+    Top = 257
+    ParamData = <
+      item
+        Name = 'COD_EMPRESA'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 1
+      end>
+    object QryFuncionariosIDFUNCIONARIO: TIntegerField
+      FieldName = 'IDFUNCIONARIO'
+      Origin = 'IDFUNCIONARIO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QryFuncionariosNMFUNCIONARIO: TStringField
+      FieldName = 'NMFUNCIONARIO'
+      Origin = 'NMFUNCIONARIO'
+      Size = 100
+    end
+    object QryFuncionariosNUCPF: TStringField
+      FieldName = 'NUCPF'
+      Origin = 'NUCPF'
+      Size = 18
+    end
+    object QryFuncionariosNURG: TStringField
+      FieldName = 'NURG'
+      Origin = 'NURG'
+      Size = 15
+    end
+    object QryFuncionariosTXEMAIL: TStringField
+      FieldName = 'TXEMAIL'
+      Origin = 'TXEMAIL'
+      Size = 100
+    end
+    object QryFuncionariosSTEXCLUIDO: TStringField
+      FieldName = 'STEXCLUIDO'
+      Origin = 'STEXCLUIDO'
+      FixedChar = True
+      Size = 1
+    end
+    object QryFuncionariosDTEXCLUIDO: TDateField
+      FieldName = 'DTEXCLUIDO'
+      Origin = 'DTEXCLUIDO'
+    end
+    object QryFuncionariosSTATIVO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'STATIVO'
+      Origin = 'STATIVO'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 7
+    end
+  end
+  object DsFuncionarios: TDataSource
+    DataSet = QryFuncionarios
+    Left = 117
+    Top = 305
+  end
+  object QryExcluiEmpresa: TFDQuery
+    Connection = frmPrincipal.ConnPrincipal
+    UpdateOptions.AssignedValues = [uvAutoCommitUpdates]
+    SQL.Strings = (
+      'UPDATE'
+      '--<REF 01>'
+      'CADEMPRESA'
+      #9'SET'#9'STEXCLUIDO = '#39'S'#39','
+      #9#9'DTEXCLUIDO = '#39'Now'#39
+      'WHERE IDEMPRESA = :COD_EMPRESA;')
+    Left = 440
+    Top = 184
+    ParamData = <
+      item
+        Name = 'COD_EMPRESA'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 4
+      end>
+  end
+  object QryEnderecos: TFDQuery
+    Connection = frmPrincipal.ConnPrincipal
+    SQL.Strings = (
+      'SELECT '#9'c.IDENDERECO,'
+      #9#9'c.NMENDERECO,'
+      #9#9'c.NUENDERECO,'
+      #9#9'c.NMBAIRRO,'
+      #9#9'c2.NMCIDADE,'
+      #9#9'c3.NMESTADO,'
+      
+        #9#9'CASE c.STATIVO WHEN '#39'S'#39' THEN '#39'ATIVO'#39' ELSE '#39'INATIVO'#39' END AS STA' +
+        'TIVO,'
+      #9#9'c.STEXCLUIDO,'
+      #9#9'c.DTEXCLUIDO'
+      #9'FROM CADENDERECOS c'
+      #9'LEFT JOIN CADCIDADE c2 '
+      #9'ON'
+      #9#9'c2.IDCIDADE = c.IDCIDADE'
+      #9'LEFT JOIN CADUF c3 '
+      #9'ON'
+      #9#9'c3.IDUF = c.IDUF '
+      'WHERE c.STEXCLUIDO = '#39'N'#39
+      'AND c.IDEMPRESA = :COD_EMPRESA'
+      'ORDER BY c.IDENDERECO ASC')
+    Left = 205
+    Top = 257
+    ParamData = <
+      item
+        Name = 'COD_EMPRESA'
+        DataType = ftInteger
+        ParamType = ptInput
+        Value = 1
+      end>
+    object QryEnderecosIDENDERECO: TIntegerField
+      FieldName = 'IDENDERECO'
+      Origin = 'IDENDERECO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object QryEnderecosNMENDERECO: TStringField
+      FieldName = 'NMENDERECO'
+      Origin = 'NMENDERECO'
+      Size = 100
+    end
+    object QryEnderecosNUENDERECO: TStringField
+      FieldName = 'NUENDERECO'
+      Origin = 'NUENDERECO'
+      Size = 10
+    end
+    object QryEnderecosNMBAIRRO: TStringField
+      FieldName = 'NMBAIRRO'
+      Origin = 'NMBAIRRO'
+      Size = 50
+    end
+    object QryEnderecosNMCIDADE: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NMCIDADE'
+      Origin = 'NMCIDADE'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 100
+    end
+    object QryEnderecosNMESTADO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'NMESTADO'
+      Origin = 'NMESTADO'
+      ProviderFlags = []
+      ReadOnly = True
+      Size = 50
+    end
+    object QryEnderecosSTATIVO: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'STATIVO'
+      Origin = 'STATIVO'
+      ProviderFlags = []
+      ReadOnly = True
+      FixedChar = True
+      Size = 7
+    end
+    object QryEnderecosSTEXCLUIDO: TStringField
+      FieldName = 'STEXCLUIDO'
+      Origin = 'STEXCLUIDO'
+      FixedChar = True
+      Size = 1
+    end
+    object QryEnderecosDTEXCLUIDO: TDateField
+      FieldName = 'DTEXCLUIDO'
+      Origin = 'DTEXCLUIDO'
+    end
+  end
+  object DsEnderecos: TDataSource
+    DataSet = QryEnderecos
+    Left = 205
+    Top = 305
+  end
+end
